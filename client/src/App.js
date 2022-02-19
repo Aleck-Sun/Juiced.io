@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './Components/HomePage/Home';
-import InstructionPage from './Components/InstructionPage/InstructionPage';
-import WelcomePage from './Components/WelcomePage/WelcomePage';
-import CreateRoom from "./Components/CreateRoom/CreateRoom";
-import JoinRoom from "./Components/JoinRoom/JoinRoom";
-import Camera from './Components/Camera/Camera';
-import WaitRoom from "./Components/WaitRoom/WaitRoom";
-import Workouts from "./Components/Workouts/Workouts";
+import HomePage from './components/HomePage/Home';
+import InstructionPage from './components/InstructionPage/InstructionPage';
+import WelcomePage from './components/WelcomePage/WelcomePage';
+import CreateRoom from "./components/CreateRoom/CreateRoom";
+import JoinRoom from "./components/JoinRoom/JoinRoom";
+import Camera from './components/Camera/Camera';
+import WaitRoom from "./components/WaitRoom/WaitRoom";
+import Workouts from "./components/Workouts/Workouts";
 
 function App() {
   return (
