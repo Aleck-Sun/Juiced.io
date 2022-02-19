@@ -30,7 +30,7 @@ export default function Code() {
                 autoComplete="off"
                 />                
             </div>
-            <button onClick={} className="Join">
+            <button className="Join" onClick={() => navigate('/WaitRoom')}>
                 Join
             </button>
         </div>

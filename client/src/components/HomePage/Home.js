@@ -13,10 +13,10 @@ export default function HomePage() {
             </h1>
             <img src={homeImg} />
             <div className="d-flex justify-content-center">
-                <button className="btn btn-primary m-2">
+                <button className="btn btn-primary m-2" onClick={() => navigate('/CreateRoom')}>
                     Create Game
                 </button>
-                <button className="btn btn-primary m-2">
+                <button className="btn btn-primary m-2" onClick={() => navigate('/JoinRoom')}>
                     Join Game
                 </button> 
             </div>
