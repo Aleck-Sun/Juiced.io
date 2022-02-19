@@ -5,7 +5,10 @@ export default function CreateRoom() {
     return (
         <div className="CreateRoom">
             <h1>
-                Would you like to create a room or join a room?
+                Here's your four-letter code!
+            </h1>
+            <h1>
+                What's your name?
             </h1>
         </div>
     );

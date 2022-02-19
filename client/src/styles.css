@@ -1,0 +1,25 @@
+.JoinRoom {
+    padding-top: 16vh;
+}
+
+.JoinRoom h1 {
+    font-size: 3em;
+    padding-bottom: 0.5em;
+}
+
+.JoinRoom h2 {
+    padding-top: 1.5em;
+    font-size: 1.5em;
+}
+
+.JoinRoom input {
+    border-radius: 0.75em;
+    height: 40px;
+    width: 500px;
+    padding: 2px 16px;
+}
+
+.JoinRoom button {
+    border-radius: 0.75em;
+    padding: 10px 60px;
+}

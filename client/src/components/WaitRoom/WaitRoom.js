@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import "../../styles.css";
 
 export default function WaitRoom() {
+    const navigate = useNavigate();
+    
     return (
         <div className="WaitRoom">
             <h1>
@@ -21,7 +23,7 @@ export default function WaitRoom() {
                     </li>
                 </ul>
             </div>
-            <button onClick={}>
+            <button onClick={() => navigate('/Workouts')}>
                 Start Game
             </button>
         </div>

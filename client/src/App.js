@@ -6,6 +6,8 @@ import WelcomePage from './Components/WelcomePage/WelcomePage';
 import CreateRoom from "./Components/CreateRoom/CreateRoom";
 import JoinRoom from "./Components/JoinRoom/JoinRoom";
 import Camera from './Components/Camera/Camera';
+import WaitRoom from "./Components/WaitRoom/WaitRoom";
+import Workouts from "./Components/Workouts/Workouts";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/CreateRoom" element={<CreateRoom />} />
             <Route path="/JoinRoom" element={<JoinRoom />} />
             <Route path="/Test" element={<Camera />} />
+            <Route path="/WaitRoom" element={<WaitRoom />} />
+            <Route path="/Workouts" element={<Workouts />} />
           </Routes>
         </div>
       </BrowserRouter>
