@@ -1,22 +1,35 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles.css";
+import "../../styles.css";
 
 export default function Code() {
     return (
         <div className="Code">
-            <h1 className="Name">
-                What's your name?
+            <h1>
+                Before you join...
             </h1>
-            <input
-            type=""
-            placeholder="ex. Skete"
-            autoFocus="on"
-            autoComplete="off"
-            />
-            <h1 className="4Letter">
-                What's your 4-letter code?
-            </h1>
+            <div className="Name">
+                <h2>
+                    What's your name?
+                </h2>
+                <input
+                type=""
+                placeholder="ex. Skete"
+                autoFocus="on"
+                autoComplete="off"
+                />                
+            </div>
+            <div className="fourLetter">
+                <h2>
+                    What's your four-letter code?
+                </h2>
+                <input
+                type=""
+                placeholder="ex. 1234"
+                autoFocus="on"
+                autoComplete="off"
+                />                
+            </div>
             <button onClick={} className="Join">
                 Join
             </button>
