@@ -5,6 +5,8 @@ import InstructionPage from './components/InstructionPage/InstructionPage';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 import CreateRoom from "./components/CreateRoom/CreateRoom";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
+import WaitRoom from "./components/WaitRoom/WaitRoom";
+import Workouts from "./components/Workouts/Workouts";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
             <Route path="/" element={<WelcomePage />} />
             <Route path="/CreateRoom" element={<CreateRoom />} />
             <Route path="/JoinRoom" element={<JoinRoom />} />
+            <Route path="/WaitRoom" element={<WaitRoom />} />
+            <Route path="/Workouts" element={<Workouts />} />
           </Routes>
         </div>
       </BrowserRouter>
