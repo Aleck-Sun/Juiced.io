@@ -35,7 +35,7 @@
                     const constraints = {
                         "video": {
                             "facingMode": {
-                                "ideal": "environment"
+                                "ideal": "user"
                             }
                         }
                     };
@@ -48,9 +48,8 @@
 
                 // Video has been started/unpaused
                 video.addEventListener('play', function () {
-
-
                     let cap = new cv.VideoCapture(video);
+                    console.log(video, video.height, video.width);
                     let frame = new cv.Mat(video.height, video.width, cv.CV_8UC4);
                     const FPS = 20;
 

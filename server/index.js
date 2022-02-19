@@ -18,12 +18,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 var roomno = 1;
 io.on('connect', (socket) => {
-    console.log('a user connected');
-    socket.on('disconnect', () => {
-      console.log('user disconnected');
-    });
-
-    socket.join("room-"+roomno);
+    console.log('Hello socket');
 })
 
 const PORT = process.env.PORT || 5000;

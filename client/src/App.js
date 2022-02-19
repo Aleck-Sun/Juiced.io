@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage/Home';
-import InstructionPage from './components/InstructionPage/InstructionPage';
-import WelcomePage from './components/WelcomePage/WelcomePage';
-import CreateRoom from "./components/CreateRoom/CreateRoom";
-import JoinRoom from "./components/JoinRoom/JoinRoom";
+import HomePage from './Components/HomePage/Home';
+import InstructionPage from './Components/InstructionPage/InstructionPage';
+import WelcomePage from './Components/WelcomePage/WelcomePage';
+import CreateRoom from "./Components/CreateRoom/CreateRoom";
+import JoinRoom from "./Components/JoinRoom/JoinRoom";
+import Camera from './Components/Camera/Camera';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<WelcomePage />} />
             <Route path="/CreateRoom" element={<CreateRoom />} />
             <Route path="/JoinRoom" element={<JoinRoom />} />
+            <Route path="/Test" element={<Camera />} />
           </Routes>
         </div>
       </BrowserRouter>

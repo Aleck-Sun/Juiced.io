@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "../../styles.css";
 
 export default function Code() {
@@ -30,9 +29,6 @@ export default function Code() {
                 autoComplete="off"
                 />                
             </div>
-            <button className="Join" onClick={() => navigate('/WaitRoom')}>
-                Join
-            </button>
         </div>
     );
 }
