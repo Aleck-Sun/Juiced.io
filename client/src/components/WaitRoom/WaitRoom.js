@@ -81,7 +81,7 @@ export default function WaitRoom() {
                     </div>
                 </div>
             </div>
-            :<Camera socket={socket} users={users} room={room} user={currUser} />}
+            :<Camera socket={socket} users={users} room={room} user={currUser} exercise={exercise} />}
         </div>
     );
 }

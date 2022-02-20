@@ -4,7 +4,7 @@ import "../../styles.css";
 
 let score = 0;
 let stage = 0;
-export default function Camera({ socket, users, room, user }) {
+export default function Camera({ socket, users, room, user, exercise }) {
     const videoRef = useRef(null);
     const photoRef = useRef(null);
 
@@ -43,60 +43,7 @@ export default function Camera({ socket, users, room, user }) {
             let frame = new cv.Mat(video.height, video.width, cv.CV_8UC4);
 
             const processVideo = () => {
-                let points = [
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 577,
-                        "y": 129
-                    },
-                    {
-                        "x": 578,
-                        "y": 131
-                    },
-                    {
-                        "x": 579,
-                        "y": 133
-                    },
-                    {
-                        "x": 580,
-                        "y": 135
-                    }
-                ];
+                let points = exercise;
 
                 console.log(redlow, redhigh, greenlow, greenhigh, bluelow, bluehigh);
 
