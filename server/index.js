@@ -24,15 +24,14 @@ io.on('connect', (socket) => {
 
         socket.join(code);
         users.set(user, { id: socket.id, room: code, points: 0 });
-        
-        var finalExercise = [];
-        for (var i = 0; i < exercise.length; i++) {
-            if (i % 2 == 0) {
-                finalExercise.push({ x: Math.round(exercise[i].x), y: Math.round(exercise[i].y) });
-            };
-        };
 
         if (!rooms.has(code)) {
+            var finalExercise = [];
+            for (var i = 0; i < exercise.length; i++) {
+                if (i % 2 == 0) {
+                    finalExercise.push({ x: Math.round(exercise[i].x), y: Math.round(exercise[i].y) });
+                };
+            };
             rooms.set(code, { id: socket.id, exercise: finalExercise });
         };
 
