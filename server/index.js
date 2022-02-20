@@ -49,6 +49,21 @@ io.on('connect', (socket) => {
     socket.on('start', ({code}) => {
         io.to(code).emit('begin', {});
     });
+
+    socket.on('update', ({code, user, score}) => {
+        if (users.has(user)) {
+            users.get(user).points = score;
+        };
+
+        var roomUsers = []
+        for (let k of users.keys()) {
+            if (users.get(k).room == code) {
+                roomUsers.push({...users.get(k), user: k});
+            };
+        };
+
+        io.to(code).emit('scoreUpdate', {users: roomUsers});
+    });
 });
 
 const PORT = process.env.PORT || 5000;
