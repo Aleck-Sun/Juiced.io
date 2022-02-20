@@ -17,11 +17,12 @@
         <div class="inputoutput">
             <canvas id="canvasOutput"></canvas>
         </div>
+        <p id="Score"></p>
     </div>
     <script>
         function onOpenCvReady() {
             cv['onRuntimeInitialized'] = () => {
-                var image = document.getElementById('image');
+                var scoreElement = document.getElementById('Score');
                 var video = document.getElementById('cam');
                 video.style.display = 'none';
                 //image.style.display = 'none';
@@ -35,7 +36,7 @@
                     const constraints = {
                         "video": {
                             "facingMode": {
-                                "ideal": "user"
+                                "ideal": "environment"
                             }
                         }
                     };
@@ -46,58 +47,553 @@
                     });
                 }
 
+                let stage = 0;
+                let score = 0;
+
+                let points = [
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 577,
+        "y": 129
+    },
+    {
+        "x": 578,
+        "y": 131
+    },
+    {
+        "x": 579,
+        "y": 133
+    },
+    {
+        "x": 580,
+        "y": 135
+    },
+    {
+        "x": 581,
+        "y": 137
+    },
+    {
+        "x": 581,
+        "y": 140
+    },
+    {
+        "x": 582,
+        "y": 143
+    },
+    {
+        "x": 582,
+        "y": 145
+    },
+    {
+        "x": 583,
+        "y": 149
+    },
+    {
+        "x": 583,
+        "y": 152
+    },
+    {
+        "x": 583,
+        "y": 156
+    },
+    {
+        "x": 583,
+        "y": 158
+    },
+    {
+        "x": 584,
+        "y": 162
+    },
+    {
+        "x": 584,
+        "y": 164
+    },
+    {
+        "x": 584,
+        "y": 167
+    },
+    {
+        "x": 584,
+        "y": 170
+    },
+    {
+        "x": 584,
+        "y": 173
+    },
+    {
+        "x": 584,
+        "y": 175
+    },
+    {
+        "x": 584,
+        "y": 177
+    },
+    {
+        "x": 584,
+        "y": 179
+    },
+    {
+        "x": 585,
+        "y": 182
+    },
+    {
+        "x": 585,
+        "y": 185
+    },
+    {
+        "x": 585,
+        "y": 187
+    },
+    {
+        "x": 585,
+        "y": 190
+    },
+    {
+        "x": 585,
+        "y": 193
+    },
+    {
+        "x": 585,
+        "y": 196
+    },
+    {
+        "x": 585,
+        "y": 200
+    },
+    {
+        "x": 585,
+        "y": 202
+    },
+    {
+        "x": 585,
+        "y": 206
+    },
+    {
+        "x": 585,
+        "y": 210
+    },
+    {
+        "x": 585,
+        "y": 213
+    },
+    {
+        "x": 585,
+        "y": 218
+    },
+    {
+        "x": 585,
+        "y": 223
+    },
+    {
+        "x": 585,
+        "y": 227
+    },
+    {
+        "x": 585,
+        "y": 231
+    },
+    {
+        "x": 585,
+        "y": 235
+    },
+    {
+        "x": 585,
+        "y": 240
+    },
+    {
+        "x": 585,
+        "y": 244
+    },
+    {
+        "x": 585,
+        "y": 247
+    },
+    {
+        "x": 585,
+        "y": 252
+    },
+    {
+        "x": 585,
+        "y": 255
+    },
+    {
+        "x": 585,
+        "y": 258
+    },
+    {
+        "x": 585,
+        "y": 261
+    },
+    {
+        "x": 585,
+        "y": 265
+    },
+    {
+        "x": 585,
+        "y": 269
+    },
+    {
+        "x": 585,
+        "y": 273
+    },
+    {
+        "x": 585,
+        "y": 276
+    },
+    {
+        "x": 585,
+        "y": 281
+    },
+    {
+        "x": 585,
+        "y": 284
+    },
+    {
+        "x": 585,
+        "y": 287
+    },
+    {
+        "x": 585,
+        "y": 291
+    },
+    {
+        "x": 585,
+        "y": 294
+    },
+    {
+        "x": 585,
+        "y": 298
+    },
+    {
+        "x": 585,
+        "y": 301
+    },
+    {
+        "x": 585,
+        "y": 305
+    },
+    {
+        "x": 585,
+        "y": 308
+    },
+    {
+        "x": 585,
+        "y": 311
+    },
+    {
+        "x": 585,
+        "y": 314
+    },
+    {
+        "x": 585,
+        "y": 317
+    },
+    {
+        "x": 585,
+        "y": 321
+    },
+    {
+        "x": 585,
+        "y": 323
+    },
+    {
+        "x": 585,
+        "y": 326
+    },
+    {
+        "x": 585,
+        "y": 328
+    },
+    {
+        "x": 585,
+        "y": 330
+    },
+    {
+        "x": 585,
+        "y": 333
+    },
+    {
+        "x": 585,
+        "y": 335
+    },
+    {
+        "x": 585,
+        "y": 337
+    },
+    {
+        "x": 585,
+        "y": 339
+    },
+    {
+        "x": 585,
+        "y": 341
+    },
+    {
+        "x": 585,
+        "y": 343
+    },
+    {
+        "x": 585,
+        "y": 345
+    },
+    {
+        "x": 585,
+        "y": 347
+    },
+    {
+        "x": 585,
+        "y": 349
+    },
+    {
+        "x": 585,
+        "y": 351
+    },
+    {
+        "x": 585,
+        "y": 353
+    },
+    {
+        "x": 585,
+        "y": 355
+    },
+    {
+        "x": 585,
+        "y": 357
+    },
+    {
+        "x": 585,
+        "y": 359
+    },
+    {
+        "x": 585,
+        "y": 362
+    },
+    {
+        "x": 585,
+        "y": 364
+    },
+    {
+        "x": 585,
+        "y": 366
+    },
+    {
+        "x": 585,
+        "y": 368
+    },
+    {
+        "x": 585,
+        "y": 370
+    },
+    {
+        "x": 585,
+        "y": 373
+    },
+    {
+        "x": 585,
+        "y": 375
+    },
+    {
+        "x": 585,
+        "y": 377
+    },
+    {
+        "x": 585,
+        "y": 379
+    },
+    {
+        "x": 585,
+        "y": 381
+    },
+    {
+        "x": 585,
+        "y": 383
+    },
+    {
+        "x": 585,
+        "y": 385
+    },
+    {
+        "x": 585,
+        "y": 386
+    },
+    {
+        "x": 584,
+        "y": 390
+    },
+    {
+        "x": 583,
+        "y": 393
+    },
+    {
+        "x": 583,
+        "y": 396
+    },
+    {
+        "x": 582,
+        "y": 399
+    },
+    {
+        "x": 581,
+        "y": 401
+    },
+    {
+        "x": 580,
+        "y": 402
+    }
+]
+
+                // remove every other point
+                points = points.filter(function(point, index) {
+                    return index % 5 < 1;
+                });
+                
                 // Video has been started/unpaused
                 video.addEventListener('play', function () {
+
+
                     let cap = new cv.VideoCapture(video);
-                    console.log(video, video.height, video.width);
                     let frame = new cv.Mat(video.height, video.width, cv.CV_8UC4);
-                    const FPS = 20;
+                    const FPS = 30;
 
                     function processVideo() {
-                            let begin = Date.now();
+                        let begin = Date.now();
 
-                            // start processing.
-                            cap.read(frame);
-                            let mask = new cv.Mat();
-                            let low = new cv.Mat(frame.rows, frame.cols, frame.type(), [180, 180, 180, 255]);
-                            let high = new cv.Mat(frame.rows, frame.cols, frame.type(), [255, 255, 255, 255]);
-                            cv.inRange(frame, low, high, mask);
-                            low.delete(); high.delete();
-                            //console.log('71 Processing time: ' + (Date.now() - begin) + 'ms');
+                        // start processing.
+                        cap.read(frame);
+                        let mask = new cv.Mat();
+                        let low = new cv.Mat(frame.rows, frame.cols, frame.type(), [100, 0, 0, 255]);
+                        let high = new cv.Mat(frame.rows, frame.cols, frame.type(), [255, 20, 20, 255]);
+                        cv.inRange(frame, low, high, mask);
+                        low.delete();
+                        high.delete();
+                        //console.log('71 Processing time: ' + (Date.now() - begin) + 'ms');
 
-                            let kernel = cv.Mat .ones(5, 5, cv.CV_8U);
-                            let opening = new cv.Mat();
-                            cv.morphologyEx(mask, opening, cv.MORPH_OPEN, kernel);
-                            
-                            // console.log('79 Processing time: ' + (Date.now() - begin) + 'ms');
-                            let boundingRect = cv.boundingRect(opening)
+                        let kernel = cv.Mat.ones(5, 5, cv.CV_8U);
+                        let opening = new cv.Mat();
+                        cv.morphologyEx(mask, opening, cv.MORPH_OPEN, kernel);
 
-                            let x = boundingRect.x;
-                            let y = boundingRect.y;
-                            let w = boundingRect.width;
-                            let h = boundingRect.height;
+                        // console.log('79 Processing time: ' + (Date.now() - begin) + 'ms');
+                        let boundingRect = cv.boundingRect(opening)
+
+                        let x = boundingRect.x;
+                        let y = boundingRect.y;
+                        let w = boundingRect.width;
+                        let h = boundingRect.height;
+
+                        let far = false
+
+                        let centerx = x + w / 2;
+                        let centery = y + h / 2;
+
+                        // check if the center is within 100 pixels of the first point
+                        if (stage == 0) {
+                            let firstPoint = points[0];
+                            let distance = Math.sqrt(Math.pow(firstPoint.x - centerx, 2) + Math.pow(
+                                firstPoint.y - centery, 2));
+                            if (distance < 100) {
+                                stage = 1;
+                                console.log('started')
+                            }
+                        } else if (stage == points.length) {
+                            let lastPoint = points[points.length - 1];
+                            let distance = Math.sqrt(Math.pow(lastPoint.x - centerx, 2) + Math.pow(lastPoint.y - centery, 2));
+                            if (distance < 100) {
+                                stage = 0;
+                                score ++;
+                                console.log('finished', score)
+                            }
+                        } else {
+                            let currentPoint = points[stage];
+                            let distance = Math.sqrt(Math.pow(currentPoint.x - centerx, 2) + Math.pow(
+                                currentPoint.y - centery, 2));
+                            if (distance < 100) {
+                                stage++;
+                            } else {
+                                far = true;
+                                stage --;
+                            }
+                        }
 
 
-                            let p1 = new cv.Point(0,0);
-                            let p2 = new cv.Point(0,0);
 
-                            if(x !== undefined && y !== undefined && w !== undefined && h !== undefined) {
-                                p1 = new cv.Point(x, y);
-                                p2 = new cv.Point(x + w, y + h);
+                        let p1 = new cv.Point(0, 0);
+                        let p2 = new cv.Point(0, 0);
+
+                        if (x !== undefined && y !== undefined && w !== undefined && h !== undefined) {
+                            p1 = new cv.Point(x, y);
+                            p2 = new cv.Point(x + w, y + h);
+                        }
+
+                        cv.rectangle(frame, p1, p2, [0, 255, 0, 255], 2, cv.LINE_8, 0);
+
+                        // draw the path
+                        for(let i = 0; i < points.length; i++) {
+                            let point = points[i];
+                            let color = [0, 0, 255, 255];
+
+                            if (i == stage) {
+                                color = [0, 255, 0, 255];
                             }
 
-                            cv.rectangle(frame, p1, p2, [0, 255, 0, 255], 2, cv.LINE_8, 0);
+                            // first point color is green
+                            if (i == 0) {
+                                color = [0, 255, 0, 255];
+                            }
+                            // last point color is red
+                            if (i == points.length - 1) {
+                                color = [0, 0, 255, 255];
+                            }
 
-                            cv.imshow('canvasOutput', frame);
 
-                            //console.log('85 Processing time: ' + (Date.now() - begin) + 'ms');
+                            cv.circle(frame, new cv.Point(point.x, point.y), 10, color, -1, cv.LINE_8, 0);
+                        }
 
-                            // Draw the rectangle
+                        cv.imshow('canvasOutput', frame);
+                        //console.log('85 Processing time: ' + (Date.now() - begin) + 'ms');
 
-                            opening.delete(); kernel.delete(); mask.delete();
-                            // schedule the next one.
-                            let delay = 1000 / FPS - (Date.now() - begin);
-                            setTimeout(processVideo, 1000 / FPS);
+                        // Draw the rectangle
+
+                        opening.delete();
+                        kernel.delete();
+                        mask.delete();
+                        // schedule the next one.
+                        let delay = 1000 / FPS - (Date.now() - begin);
+                        setTimeout(processVideo, delay);
                     };
 
                     // schedule the first one.
