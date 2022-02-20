@@ -54,7 +54,7 @@ io.on('connect', (socket) => {
         if (users.has(user)) {
             users.get(user).points = score;
         };
-        
+
         var roomUsers = []
         for (let k of users.keys()) {
             if (users.get(k).room == code) {
@@ -63,6 +63,34 @@ io.on('connect', (socket) => {
         };
 
         io.to(code).emit('scoreUpdate', {users: roomUsers});
+    });
+
+    socket.on('end', ({code, users}) => {
+        var winners = [];
+        for (user in users) {
+            winners.push({user: user.user, points: user.points});
+        };
+
+        winners = winners.sort((a, b) => {
+            return b.points - a.points;
+        });
+
+        io.to(code).emit('winners', {winners: winners});
+        socket.disconnect()
+    });
+
+    socket.on('disconnect', () => {
+        for (let k of users.keys()) {
+            if (users.get(k).id == socket.id) {
+                users.delete(k);
+            };
+        };
+
+        for (let k of rooms.keys()) {
+            if (rooms.get(k).id == socket.id) {
+                rooms.delete(k);
+            };
+        };
     });
 });
 
