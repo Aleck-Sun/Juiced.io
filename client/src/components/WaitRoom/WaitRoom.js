@@ -52,7 +52,7 @@ export default function WaitRoom() {
             <div className="WaitRoom container d-flex justify-content-center">
                 <div className="row">
                     <div className="col-ms-12 text-center">
-                        <img src={group_7Img} />
+                        <img src={group_7Img} alt="group_7" />
                         <h1>Room: {room}</h1>
                     </div>
                     <p className="col-ms-12">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import arrow from "../../images/arrow.png";
 import fitz_HoopsImg from '../../images/Fitz_Hoops.png';
 import "../../styles.css";
 
@@ -53,9 +54,14 @@ export default function JoinRoom() {
                             onChange={(e) => setRoom(e.target.value)}
                             />                
                         </div>
-                        <button className="Join btn btn-dark btn-lg mt-5" onClick={joinGame}>
-                            Join
-                        </button>                    
+                        <span className="d-flex justify-content-between">
+                            <button className="Join btn btn-dark btn-lg mt-5" onClick={joinGame}>
+                                Join
+                            </button>
+                            <button className="arrow btn btn-dark mt-5" onClick={() => navigate('/')}>
+                                <img src={arrow} alt="back arrow" />
+                            </button>                                                           
+                        </span>
                     </div>
                     <div className="col-sm-6">
                         <img src={fitz_HoopsImg} alt="fitz hoops" />

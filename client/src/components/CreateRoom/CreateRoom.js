@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import arrow from "../../images/arrow.png";
 import CanvasDraw from 'react-canvas-draw';
 import "../../styles.css";
 
@@ -68,6 +69,9 @@ export default function CreateRoom() {
                     <button className="btn btn-dark" onClick={createGame}>
                         <strong>Create Game</strong>
                     </button>
+                    <button className="arrow btn btn-dark" onClick={() => navigate('/')}>
+                        <img src={arrow} alt="back arrow" />
+                    </button>  
                 </span>
             </div>            
         </div>
