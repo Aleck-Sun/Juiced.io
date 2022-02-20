@@ -130,18 +130,20 @@ export default function Camera({ socket, users, room, user, exercise }) {
     };
 
     return (
-        <div className="Camera">
+        <div className="Camera d-flex flex-column align-items-center justify-content-center">
+            <h1>Your score: {score}</h1>
             <OpenCvProvider onLoad={ onLoaded }>
                 <video ref={ videoRef } width="700" height="500" style={ { display: "none" } } />
                 <canvas id="canvasOutput" ref={ photoRef } />
             </OpenCvProvider> 
-            <div>Your score: {score}</div>
-            {currUsers.length > 0 ? currUsers.map((currUser) => {
-                if (currUser.user == user) return;
-                return <div>
-                            {currUser.user}: {currUser.points}
-                        </div>
-            }) : null}
+            <div className="d-flex">
+                {currUsers.length > 0 ? currUsers.map((currUser) => {
+                    if (currUser.user == user) return;
+                    return <h3 className="m-2">
+                                {currUser.user}: {currUser.points}
+                            </h3>
+                }) : null}
+            </div>
             {/* <div className="slidecontainer">
                 <input type="range" min="1" max="255" value={redlow} onChange={(e) => setRedlow(e.target.value)} className="rl" />
                 <input type="range" min="1" max="255" value={redhigh} onChange={(e) => setRedhigh(e.target.value)} className="rh" />

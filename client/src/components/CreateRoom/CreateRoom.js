@@ -39,13 +39,10 @@ export default function CreateRoom() {
             <div className="container">
                 <p className="text-center">
                     Room Code: <strong>{roomCode}</strong>
-                </p>     
-                <h1>
-                    Draw Line of Motion
-                </h1>                
-                <h2>Exercise Name</h2>
-                <input placeholder="ex. push ups" value={user} type="text" onChange={(e) => setUser(e.target.value)}></input>
-                <h2>Create Exercise</h2>
+                </p>                    
+                <h2>Name:</h2>
+                <input placeholder="ex. Daniel" value={user} type="text" onChange={(e) => setUser(e.target.value)}></input>
+                <h2>Create Exercise: Draw Line of Motion</h2>
                 
                 <div className="draw d-flex flex-column align-items-center justify-content-center">
                     <CanvasDraw
