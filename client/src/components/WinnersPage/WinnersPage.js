@@ -15,16 +15,16 @@ export default function WinnersPage() {
         setWinnersList(winners);
     }, [winnersList]);
 
-    console.log(winnersList);
+    console.log(winnersList.winners);
     
     return (
         <div className="WinnersPage">
             <h3>Results!</h3>
             <div className="d-flex flex-column align-items-center container">
-                    {winnersList.winners.length > 0 ? winnersList.winners.map((player, index) => {
+                    {"winners" in winnersList ? winnersList.winners.map((player, index) => {
                     return <>
-                                <div className="card mb-3" key={player.user}>
-                                    <div className="card-body" key={player.user}>
+                                <div className="card mb-3" key={player.user + index}>
+                                    <div className="card-body" key={player.user + index}>
                                         No. {index}: {player.user} who scored {player.points} points
                                     </div>
                                 </div>
