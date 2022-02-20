@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import fitz_RunningImg from '../../images/Fitz_Running.png';
 
 import "../../styles.css";
 
 export default function WinnersPage() {
-    const navigate = useNavigate();
     const { state } = useLocation();
 
     const [winnersList, setWinnersList] = useState([]);
@@ -14,18 +14,17 @@ export default function WinnersPage() {
 
         setWinnersList(winners);
     }, [winnersList]);
-
-    console.log(winnersList.winners);
     
     return (
-        <div className="WinnersPage">
-            <h3>Results!</h3>
-            <div className="d-flex flex-column align-items-center container">
-                    {"winners" in winnersList ? winnersList.winners.map((player, index) => {
+        <div className="WinnersPage d-flex flex-column align-items-center">
+            <h1>Results!</h1>
+            <img src={fitz_RunningImg}></img>
+            <div className="container">
+                    {winnersList && winnersList.length > 0 ? winnersList.winners.map((player, index) => {
                     return <>
                                 <div className="card mb-3" key={player.user + index}>
                                     <div className="card-body" key={player.user + index}>
-                                        No. {index}: {player.user} who scored {player.points} points
+                                        No. {index + 1}: {player.user} who scored {player.points} points
                                     </div>
                                 </div>
                             </>
