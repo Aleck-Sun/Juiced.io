@@ -6,6 +6,7 @@ import "../../styles.css";
 
 export default function WinnersPage() {
     const { state } = useLocation();
+    const navigate = useNavigate();
 
     const [winnersList, setWinnersList] = useState([]);
     
@@ -30,6 +31,9 @@ export default function WinnersPage() {
                             </>
                 }) : <></> }
             </div>  
+            <button className="btn btn-primary m-2" onClick={() => navigate('/')}>
+                back
+            </button>    
         </div>
     );
 }
