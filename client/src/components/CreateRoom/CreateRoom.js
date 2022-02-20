@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { io } from "socket.io-client";
 import { useNavigate } from 'react-router-dom';
 import CanvasDraw from 'react-canvas-draw';
 import "../../styles.css";
 
-const codes = "ABCDEFGHIJKLMNOPKRSTUVWXYZ"
-let socket;
+const codes = "ABCDEFGHIJKLMNOPKRSTUVWXYZ";
 
 export default function CreateRoom() {
     const [roomCode, setRoomCode] = useState("AAAA");

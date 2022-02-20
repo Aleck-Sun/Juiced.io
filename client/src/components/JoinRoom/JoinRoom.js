@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import fitz_HoopsImg from '../../images/Fitz_Hoops.png';
 import "../../styles.css";
 
 export default function JoinRoom() {
+    const [user, setUser] = useState("");
+    const [room, setRoom] = useState("");
     const navigate = useNavigate();
+
+    const joinGame = () => {
+        if (user != "" && room != "") {
+            navigate('/room', {
+                state: {
+                    user: user,
+                    code: room
+                }
+            })
+        };
+    };
 
     return (
         <div className="JoinRoom container d-flex justify-content-center">
@@ -22,6 +35,8 @@ export default function JoinRoom() {
                         placeholder="ex. Skete"
                         autoFocus="on"
                         autoComplete="off"
+                        value={user}
+                        onChange={(e) => setUser(e.target.value)}
                         />                
                     </div>
                     <div className="fourLetter">
@@ -33,9 +48,11 @@ export default function JoinRoom() {
                         placeholder="ex. 1234"
                         autoFocus="on"
                         autoComplete="off"
+                        value={room}
+                        onChange={(e) => setRoom(e.target.value)}
                         />                
                     </div>
-                    <button className="Join btn btn-dark btn-lg mt-5" onClick={() => navigate('/WaitRoom')}>
+                    <button className="Join btn btn-dark btn-lg mt-5" onClick={joinGame}>
                         Join
                     </button>                    
                 </div>
