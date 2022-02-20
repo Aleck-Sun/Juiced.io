@@ -26,12 +26,17 @@ io.on('connect', (socket) => {
         users.set(user, { id: socket.id, room: code, points: 0 });
 
         if (!rooms.has(code)) {
-            var finalExercise = [];
+            var finalExercise = [exercise[0]];
             for (var i = 0; i < exercise.length; i++) {
-                if (i % 2 == 0) {
-                    finalExercise.push({ x: Math.round(exercise[i].x), y: Math.round(exercise[i].y) });
-                };
-            };
+                // last node on finalExercise
+                var lastNode = finalExercise[finalExercise.length - 1];
+                // distance between last node and current node
+                var distance = Math.sqrt(Math.pow(lastNode.x - exercise[i].x, 2) + Math.pow(lastNode.y - exercise[i].y, 2));
+                if (distance > 20) {
+                    finalExercise.push(exercise[i]);
+                }
+            }
+            
             rooms.set(code, { id: socket.id, exercise: finalExercise });
         };
 

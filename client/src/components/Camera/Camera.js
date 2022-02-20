@@ -9,11 +9,11 @@ export default function Camera({ socket, users, room, user, exercise }) {
 
     const [currUsers, setCurrUsers] = useState(users);
     const [score, setScore] = useState(0);
-    const [redlow, setRedlow] = useState(180);
+    const [redlow, setRedlow] = useState(200);
     const [redhigh, setRedhigh] = useState(255);
-    const [greenlow, setGreenlow] = useState(180);
+    const [greenlow, setGreenlow] = useState(200);
     const [greenhigh, setGreenhigh] = useState(255);
-    const [bluelow, setBluelow] = useState(180);
+    const [bluelow, setBluelow] = useState(200);
     const [bluehigh, setBluehigh] = useState(255);
 
     const getVideo = () => {
@@ -68,7 +68,7 @@ export default function Camera({ socket, users, room, user, exercise }) {
                 let currPoint = points[stage]
                 let distance = Math.sqrt(Math.pow(currPoint.x - centerx, 2) + Math.pow(currPoint.y - centery, 2));
                 // Check point is within exercise range
-                if (distance < 50) {
+                if (distance < 75) {
                     // First point
                     if (stage == 0) {
                         stage = 1;
@@ -131,11 +131,11 @@ export default function Camera({ socket, users, room, user, exercise }) {
 
     return (
         <div className="Camera">
-            <div>Your score: {score}</div>
             <OpenCvProvider onLoad={ onLoaded }>
                 <video ref={ videoRef } width="700" height="500" style={ { display: "none" } } />
                 <canvas id="canvasOutput" ref={ photoRef } />
             </OpenCvProvider> 
+            <div>Your score: {score}</div>
             {currUsers.length > 0 ? currUsers.map((currUser) => {
                 if (currUser.user == user) return;
                 return <div>
