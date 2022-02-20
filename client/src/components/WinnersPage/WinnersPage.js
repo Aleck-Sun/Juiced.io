@@ -1,17 +1,21 @@
 import React, {useState, useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import "../../styles.css";
 
 export default function WinnersPage() {
     const navigate = useNavigate();
+    const { state } = useLocation();
 
     const [winnersList, setWinnersList] = useState([]);
     
     useEffect(() => {
-        if (!winners) console.log("winners is null");
+        const winners = state
+
         setWinnersList(winners);
-    }, [winners]);
+    }, []);
+
+    console.log(winnersList);
     
     return (
         <div className="WinnersPage">

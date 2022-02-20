@@ -51,7 +51,7 @@ export default function WaitRoom() {
             console.log(winners);
             socket.disconnect();
 
-            navigate('/room', {
+            navigate('/Winners', {
                 state:{
                     winners: winners
                 }
