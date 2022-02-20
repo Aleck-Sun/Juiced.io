@@ -5,7 +5,7 @@ import InstructionPage from './components/InstructionPage/InstructionPage';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 import CreateRoom from "./components/CreateRoom/CreateRoom";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
-import Camera from "./components/Camera/Camera";
+import Camera from './components/Camera/Camera';
 import WaitRoom from "./components/WaitRoom/WaitRoom";
 import Workouts from "./components/Workouts/Workouts";
 
