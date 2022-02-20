@@ -4,10 +4,12 @@ import "../../styles.css";
 
 let score = 0;
 let stage = 0;
-export default function Camera() {
+export default function Camera({ socket, users, room, user }) {
     const videoRef = useRef(null);
     const photoRef = useRef(null);
 
+    const [currUsers, setCurrUsers] = useState(users);
+    const [score, setScore] = useState(0);
     const [redlow, setRedlow] = useState(180);
     const [redhigh, setRedhigh] = useState(255);
     const [greenlow, setGreenlow] = useState(180);
@@ -128,7 +130,7 @@ export default function Camera() {
                     // Last point
                     } else if (stage == points.length - 1) {
                         stage = 0;
-                        score += 1
+                        updateScore()
                         console.log(score);
                     } else {
                         stage += 1;
@@ -166,23 +168,41 @@ export default function Camera() {
     };
 
     useEffect(() => {
+        socket.on('scoreUpdate', ({users}) => {
+            setCurrUsers(users);
+        })
+    }, []);
+
+    useEffect(() => {
         getVideo();
     }, [videoRef]);
 
+    const updateScore = () => {
+        setScore(score + 1);
+        socket.emit('update', {code:room, user: user, score: score});
+    };
+
     return (
         <div className="Camera">
+            <div>Your score: {score}</div>
             <OpenCvProvider onLoad={ onLoaded }>
                 <video ref={ videoRef } width="700" height="500" style={ { display: "none" } } />
                 <canvas id="canvasOutput" ref={ photoRef } />
             </OpenCvProvider> 
-            <div className="slidecontainer">
+            {currUsers.length > 0 ? currUsers.map((currUser) => {
+                if (currUser.user == user) return;
+                return <div>
+                            {currUser.user}: {currUser.points}
+                        </div>
+            }) : null}
+            {/* <div className="slidecontainer">
                 <input type="range" min="1" max="255" value={redlow} onChange={(e) => setRedlow(e.target.value)} className="rl" />
                 <input type="range" min="1" max="255" value={redhigh} onChange={(e) => setRedhigh(e.target.value)} className="rh" />
                 <input type="range" min="1" max="255" value={greenlow} onChange={(e) => setGreenlow(e.target.value)} className="gl" />
                 <input type="range" min="1" max="255" value={greenhigh} onChange={(e) => setGreenhigh(e.target.value)} className="gh" />
                 <input type="range" min="1" max="255" value={bluelow} onChange={(e) => setBluelow(e.target.value)} className="bl" />
                 <input type="range" min="1" max="255" value={bluehigh} onChange={(e) => setBluehigh(e.target.value)} className="bh" />
-            </div> 
+            </div>  */}
         </div>
     );
 };

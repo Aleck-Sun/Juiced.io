@@ -11,6 +11,7 @@ export default function WaitRoom() {
     const [exercise, setExercise] = useState([]);
     const [users, setUsers] = useState([]);
     const [room, setRoom] = useState('AAAA');
+    const [currUser, setCurrUser] = useState(null);
     const [start, setStart] = useState(false);
     const navigate = useNavigate();
 
@@ -24,6 +25,8 @@ export default function WaitRoom() {
             "timeout" : 10000,                  
             "transports" : ["websocket"]
         })
+
+        setCurrUser(user);
 
         socket.emit('join', {code: code, user: user, exercise: exercise}, (err) => {
             if (err) {
@@ -78,7 +81,7 @@ export default function WaitRoom() {
                     </div>
                 </div>
             </div>
-            :<Camera />}
+            :<Camera socket={socket} users={users} room={room} user={currUser} />}
         </div>
     );
 }
