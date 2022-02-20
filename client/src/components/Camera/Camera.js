@@ -96,6 +96,8 @@ export default function Camera() {
                     }
                 ];
 
+                console.log(redlow, redhigh, greenlow, greenhigh, bluelow, bluehigh);
+
                 let begin = Date.now();
                 cap.read(frame);
                 // Process and filter
@@ -176,7 +178,7 @@ export default function Camera() {
                 <canvas id="canvasOutput" ref={ photoRef } />
             </OpenCvProvider> 
             <div className="slidecontainer">
-                <input type="range" min="1" max="255" value={redlow} onChange={(e) => setRedlow(e.target.value)} className="rl" />
+                <input type="range" min="1" max="255" value={redlow} onChange={(e) => console.log(e.target.value)} className="rl" />
                 <input type="range" min="1" max="255" value={redhigh} onChange={(e) => setRedhigh(e.target.value)} className="rh" />
                 <input type="range" min="1" max="255" value={greenlow} onChange={(e) => setGreenlow(e.target.value)} className="gl" />
                 <input type="range" min="1" max="255" value={greenhigh} onChange={(e) => setGreenhigh(e.target.value)} className="gh" />
