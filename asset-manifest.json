@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Aleck-Sun/Juiced.io/static/css/main.59883f75.css",
+    "main.js": "/Aleck-Sun/Juiced.io/static/js/main.527e71a6.js",
+    "static/media/intro.jpeg": "/Aleck-Sun/Juiced.io/static/media/intro.a77f4e08964c6f13f29e.jpeg",
+    "static/media/Fitz_Hoops.png": "/Aleck-Sun/Juiced.io/static/media/Fitz_Hoops.483f583103dcc2d7981c.png",
+    "static/media/Group_7.png": "/Aleck-Sun/Juiced.io/static/media/Group_7.21e20c82a8595b0aed23.png",
+    "static/media/Fitz_Running.png": "/Aleck-Sun/Juiced.io/static/media/Fitz_Running.1678cf711e442835e992.png",
+    "static/media/arrow.png": "/Aleck-Sun/Juiced.io/static/media/arrow.80f03fd6588d51debf74.png",
+    "index.html": "/Aleck-Sun/Juiced.io/index.html",
+    "main.59883f75.css.map": "/Aleck-Sun/Juiced.io/static/css/main.59883f75.css.map",
+    "main.527e71a6.js.map": "/Aleck-Sun/Juiced.io/static/js/main.527e71a6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.59883f75.css",
+    "static/js/main.527e71a6.js"
+  ]
+}
