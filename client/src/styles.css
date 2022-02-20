@@ -1,16 +1,65 @@
+.CreateRoom {
+    padding-top: 2vh;
+}
+
+.CreateRoom button {
+    margin: 0px 16px;
+}
+
+.CreateRoom h1 {
+    font-size: 1.8em;
+}
+
+.CreateRoom h2 {
+    font-size: 1.2em;
+}
+
+.CreateRoom input {
+    border-radius: 0.75em;
+    height: 40px;
+    width: 100%;
+    padding: 2px 16px;
+}
+
+.CreateRoom p {
+    margin: 0;
+}
+
+.CreateRoom input, .CreateRoom .draw {
+    margin-bottom: 0.7em;
+}
+
+.CreateRoom .container {
+    width: 55vw;
+}
+
+.CreateRoom .draw {
+    border-radius: 1em;
+    border: 10px solid rgb(223, 223, 223);
+}
+
 .HomePage {
     background-image: url("./images/intro.jpeg");
     background-size: cover;
     height: 100vh;
 }
 
-.HomePage img {
-    width: 150px;
-}
-
 .HomePage .container {
     height: 50vh;
     width: 40vw;
+}
+
+.HomePage div.readyTo {
+    color: white;
+    letter-spacing: 4px;
+    word-spacing: 10px;
+    margin-bottom: 16px;
+}
+
+.HomePage h1 {
+    font-size: 5.6em;
+    color: black;
+    padding-bottom: 0.3em;
 }
 
 .HomePage h1 strong {
@@ -21,49 +70,43 @@
     padding-right: 0.7em;
 }
 
-.HomePage div.readyTo {
-    color: white;
-    letter-spacing: 4px;
-    word-spacing: 10px;
-    margin-bottom: 16px;
+.HomePage img {
+    padding-bottom: 3em;    
 }
 
-.JoinRoom {
-    padding-top: 16vh;
+.HomePage img, .InstructionPage img {
+    width: 150px;
+    padding-top: 2em;
+    margin-left: 2em;
 }
 
-.InstructionPage,
-.WaitRoom {
-    padding-top: 10vh;
-    padding-bottom: 16vh
+.CreateRoom button,
+.HomePage button,
+.InstructionPage button,
+.JoinRoom button,
+.WaitRoom button {
+    border-radius: 0.75em;
+    padding: 10px 30px;
 }
 
-.WaitRoom .card {
-    border-radius: 0.5em;
+.InstructionPage img {
+    padding-bottom: 0em;
 }
 
 .InstructionPage h1,
 .JoinRoom h1 {
     font-size: 3em;
-    padding-bottom: 0.5em;
-}
-
-.HomePage h1 {
-    font-size: 5.6em;
-    color: black;
-    padding-bottom: 0.3em;
-}
-
-.HomePage img {
-    padding-top: 2em;
-    padding-bottom: 3em;
-    margin-left: 2em;
 }
 
 .InstructionPage h2,
 .JoinRoom h2 {
     padding-top: 1.5em;
     font-size: 1.5em;
+}
+
+.JoinRoom {
+    padding-top: 16vh;
+    padding-bottom: 0.5em;
 }
 
 .JoinRoom input {
@@ -73,15 +116,16 @@
     padding: 2px 16px;
 }
 
-.HomePage button,
-.InstructionPage button,
-.JoinRoom button,
-.WaitRoom button {
-    border-radius: 0.75em;
-    padding: 10px 30px;
-}
-
 .JoinRoom button,
 .WaitRoom button {
     padding: 10px 60px;
+}
+
+.WaitRoom {
+    padding-top: 10vh;
+    padding-bottom: 16vh
+}
+
+.WaitRoom .card {
+    border-radius: 0.5em;
 }

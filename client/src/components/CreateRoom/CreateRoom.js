@@ -34,30 +34,42 @@ export default function CreateRoom() {
         setRoomCode(code)
     }, [])
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center">
-            <p>
-                Room code: {roomCode}
-            </p>
-            <label>Name:</label>
-            <input value={user} type="text" onChange={(e) => setUser(e.target.value)}></input>
-            <label>Create Exercise:</label>
-            <button onClick={() => canvas.eraseAll()}>Restart Drawing</button>
-            <div className="border border-dark">
-                <CanvasDraw
-                    ref={canvasDraw => setCanvas(canvasDraw)}
-                    onChange={(e) => {
-                        if (e.lines > 0) {
-                            e.lines.pop(0);
-                        }
-                        setCanvas(e);
-                    }}
-                    hideInterface
-                    hideGrid
-                    canvasWidth={700}
-                    canvasHeight={500}
-                />
-            </div>
-            <button onClick={createGame}>Create Game</button>
+        <div className="CreateRoom">
+            <div className="container">
+                <p className="text-center">
+                    Room Code: <strong>{roomCode}</strong>
+                </p>     
+                <h1>
+                    Draw Line of Motion
+                </h1>                
+                <h2>Exercise Name</h2>
+                <input placeholder="ex. push ups" value={user} type="text" onChange={(e) => setUser(e.target.value)}></input>
+                <h2>Create Exercise</h2>
+                
+                <div className="draw d-flex flex-column align-items-center justify-content-center">
+                    <CanvasDraw
+                        ref={canvasDraw => setCanvas(canvasDraw)}
+                        onChange={(e) => {
+                            if (e.lines > 0) {
+                                e.lines.pop(0);
+                            }
+                            setCanvas(e);
+                        }}
+                        hideInterface
+                        hideGrid
+                        canvasWidth={700}
+                        canvasHeight={500}
+                    />
+                </div>
+                <span>
+                    <button className="btn btn-dark" onClick={() => canvas.eraseAll()}>
+                        <strong>Restart Drawing</strong>
+                    </button>
+                    <button className="btn btn-dark" onClick={createGame}>
+                        <strong>Create Game</strong>
+                    </button>
+                </span>
+            </div>            
         </div>
     );
 }
