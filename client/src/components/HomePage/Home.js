@@ -9,8 +9,9 @@ export default function HomePage() {
     return (
         <div className="HomePage d-flex flex-column align-items-center container">
             <h1>
-                Ready to battle?
+                Juiced.io
             </h1>
+            <p>Battle your friends and compete for title of best athlete!</p>
             <img src={homeImg} />
             <div className="d-flex justify-content-center">
                 <button className="btn btn-dark m-2" onClick={() => navigate('/CreateRoom')}>
