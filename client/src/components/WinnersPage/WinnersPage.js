@@ -21,9 +21,9 @@ export default function WinnersPage() {
             <h1>Results!</h1>
             <img src={fitz_RunningImg}></img>
             <div className="container">
-                    {winnersList && winnersList.length > 0 ? winnersList.winners.map((player, index) => {
+                    {winnersList.winners && winnersList.winners.length > 0 ? winnersList.winners.map((player, index) => {
                     return <>
-                                <div className="card mb-3" key={player.user + index}>
+                                <div className="card m-3" key={player.user + index}>
                                     <div className="card-body" key={player.user + index}>
                                         No. {index + 1}: {player.user} who scored {player.points} points
                                     </div>
