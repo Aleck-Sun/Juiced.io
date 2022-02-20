@@ -25,8 +25,7 @@ io.on('connect', (socket) => {
         socket.join(code);
         users.set(user, { id: socket.id, room: code, points: 0 });
 
-        if (!rooms.has(code)) {
-            if(exercise == "") return callback({ error: 'Require fields' });
+        if (!rooms.has(code) && exercise != "") {
             var finalExercise = [exercise[0]];
             for (var i = 0; i < exercise.length; i++) {
                 // last node on finalExercise
@@ -67,7 +66,7 @@ io.on('connect', (socket) => {
                 roomUsers.push({...users.get(k), user: k});
             };
         };
-        if (score == 2) {
+        if (score == 10) {
             io.to(code).emit('winners', {winners: roomUsers});
         } else {
             io.to(code).emit('scoreUpdate', {users: roomUsers});
