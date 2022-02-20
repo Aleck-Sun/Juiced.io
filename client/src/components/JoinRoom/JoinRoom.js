@@ -13,7 +13,7 @@ export default function JoinRoom() {
                     <h1>
                         Before you join...
                     </h1>
-                    <div className="Name">
+                    <div className="name">
                         <h2>
                             What's your name?
                         </h2>

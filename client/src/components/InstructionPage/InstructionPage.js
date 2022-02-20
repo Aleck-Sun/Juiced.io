@@ -6,15 +6,30 @@ export default function InstructionPage() {
     const navigate = useNavigate();
 
     return (
-        <div className="d-flex flex-column d-flex align-items-center">
+        <div className="InstructionPage d-flex flex-column align-items-center">
             <h1>
                 How to Play:
             </h1>
+            <h2 className="">
+                Step 1. Printable QR Code
+            </h2>
             <p>
-                This is how you play.
+                Download and print out the QR code image <a href="./">here</a>.
             </p>
-            <button className="btn btn-primary m-2" onClick={() => navigate('/')}>
-                back
+            <h2>
+                Step 2. Grab the Scissors
+            </h2>
+            <p>
+                Cut out the QR code image.
+            </p>
+            <h2>
+                Step 3. Tape and Play!
+            </h2>
+            <p>
+                Lastly, tape the QR code image to the respective body part depending on the excerise.
+            </p>
+            <button className="btn btn-dark mt-5" onClick={() => navigate('/')}>
+                Back
             </button>           
         </div>
     );

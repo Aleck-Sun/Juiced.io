@@ -3,6 +3,7 @@
 }
 
 .HomePage,
+.InstructionPage,
 .WaitRoom,
 .WelcomePage {
     padding-top: 10vh;
@@ -13,13 +14,15 @@
 }
 
 .HomePage h1,
+.InstructionPage h1,
 .JoinRoom h1,
 .WelcomePage h1 {
     font-size: 3em;
     padding-bottom: 0.5em;
 }
 
-.JoinRoom h2
+.InstructionPage h2,
+.JoinRoom h2,
 .WelcomePage h2 {
     padding-top: 1.5em;
     font-size: 1.5em;
@@ -32,11 +35,16 @@
     padding: 2px 16px;
 }
 
-.HomePage button, .JoinRoom button, .WaitRoom button, .WelcomePage button {
+.HomePage button,
+.InstructionPage button,
+.JoinRoom button,
+.WaitRoom button,
+.WelcomePage button {
     border-radius: 0.75em;
     padding: 10px 30px;
 }
 
-.JoinRoom button, .WaitRoom button {
+.JoinRoom button,
+.WaitRoom button {
     padding: 10px 60px;
 }
