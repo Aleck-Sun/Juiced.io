@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import fitz_RunningImg from '../../images/Fitz_Running.png';
 
 import "../../styles.css";
