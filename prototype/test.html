@@ -18,6 +18,14 @@
             <canvas id="canvasOutput"></canvas>
         </div>
         <p id="Score"></p>
+        <div class="slidecontainer">
+        <input type="range" min="1" max="255" value="100" class="slider" id="rl">
+        <input type="range" min="1" max="255" value="0" class="slider" id="gl">
+        <input type="range" min="1" max="255" value="0" class="slider" id="bl">
+        <input type="range" min="1" max="255" value="255" class="slider" id="rh">
+        <input type="range" min="1" max="255" value="20" class="slider" id="gh">
+        <input type="range" min="1" max="255" value="20" class="slider" id="bh">
+        </div>
     </div>
     <script>
         function onOpenCvReady() {
@@ -49,6 +57,40 @@
 
                 let stage = 0;
                 let score = 0;
+
+                var rlowe = document.getElementById("rl");
+                var glowe = document.getElementById("gl");
+                var blowe = document.getElementById("bl");
+                var rhighe = document.getElementById("rh");
+                var ghighe = document.getElementById("gh");
+                var bhighe = document.getElementById("bh");
+
+                var rlow = rlowe.value;
+                var glow = glowe.value;
+                var blow = blowe.value;
+                var rhig = rhighe.value;
+                var ghig = ghighe.value;
+                var bhig = bhighe.value;
+
+                // Update the current slider value (each time you drag the slider handle)
+                rlowe.oninput = function() {
+                    rlow = parseFloat(this.value);
+                }
+                glowe.oninput = function() {
+                    glow = parseFloat(this.value);
+                }
+                blowe.oninput = function() {
+                    blow = parseFloat(this.value);
+                }
+                rhighe.oninput = function() {
+                    rhig = parseFloat(this.value);
+                }
+                ghighe.oninput = function() {
+                    ghig = parseFloat(this.value);
+                }
+                bhighe.oninput = function() {
+                    bhig = parseFloat(this.value);
+                }
 
                 let points = [
     {
@@ -488,7 +530,7 @@
 
                     let cap = new cv.VideoCapture(video);
                     let frame = new cv.Mat(video.height, video.width, cv.CV_8UC4);
-                    const FPS = 30;
+                    const FPS = 24;
 
                     function processVideo() {
                         let begin = Date.now();
@@ -496,8 +538,11 @@
                         // start processing.
                         cap.read(frame);
                         let mask = new cv.Mat();
-                        let low = new cv.Mat(frame.rows, frame.cols, frame.type(), [100, 0, 0, 255]);
-                        let high = new cv.Mat(frame.rows, frame.cols, frame.type(), [255, 20, 20, 255]);
+
+                        console.log("rlow", rlow, "rhig", rhig, "glow", glow, "ghig", ghig, "blow", blow, "bhig", bhig);
+
+                        let low = new cv.Mat(frame.rows, frame.cols, frame.type(), [parseInt(rlow), parseInt(glow), parseInt(blow), 255]);
+                        let high = new cv.Mat(frame.rows, frame.cols, frame.type(), [parseInt(rhig), parseInt(ghig), parseInt(bhig), 255]);
                         cv.inRange(frame, low, high, mask);
                         low.delete();
                         high.delete();
@@ -525,14 +570,14 @@
                             let firstPoint = points[0];
                             let distance = Math.sqrt(Math.pow(firstPoint.x - centerx, 2) + Math.pow(
                                 firstPoint.y - centery, 2));
-                            if (distance < 100) {
+                            if (distance < 50) {
                                 stage = 1;
                                 console.log('started')
                             }
                         } else if (stage == points.length) {
                             let lastPoint = points[points.length - 1];
                             let distance = Math.sqrt(Math.pow(lastPoint.x - centerx, 2) + Math.pow(lastPoint.y - centery, 2));
-                            if (distance < 100) {
+                            if (distance < 50) {
                                 stage = 0;
                                 score ++;
                                 console.log('finished', score)
@@ -541,11 +586,10 @@
                             let currentPoint = points[stage];
                             let distance = Math.sqrt(Math.pow(currentPoint.x - centerx, 2) + Math.pow(
                                 currentPoint.y - centery, 2));
-                            if (distance < 100) {
+                            if (distance < 50) {
                                 stage++;
                             } else {
-                                far = true;
-                                stage --;
+                                far = true; 
                             }
                         }
 
