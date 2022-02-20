@@ -2,11 +2,13 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://aleck-sun.github.io/Juiced.io",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
+    "gh-pages": "^3.2.3",
     "opencv-react": "0.0.5",
     "react": "^17.0.2",
     "react-canvas-draw": "^1.2.1",
@@ -17,6 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
