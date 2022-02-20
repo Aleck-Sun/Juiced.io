@@ -54,7 +54,7 @@ io.on('connect', (socket) => {
         if (users.has(user)) {
             users.get(user).points = score;
         };
-
+        
         var roomUsers = []
         for (let k of users.keys()) {
             if (users.get(k).room == code) {

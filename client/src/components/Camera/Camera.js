@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { OpenCvProvider } from 'opencv-react';
 import "../../styles.css";
 
-let score = 0;
 let stage = 0;
 export default function Camera({ socket, users, room, user, exercise }) {
     const videoRef = useRef(null);
@@ -44,9 +43,6 @@ export default function Camera({ socket, users, room, user, exercise }) {
 
             const processVideo = () => {
                 let points = exercise;
-
-                console.log(redlow, redhigh, greenlow, greenhigh, bluelow, bluehigh);
-
                 let begin = Date.now();
                 cap.read(frame);
                 // Process and filter
@@ -80,7 +76,6 @@ export default function Camera({ socket, users, room, user, exercise }) {
                     } else if (stage == points.length - 1) {
                         stage = 0;
                         updateScore()
-                        console.log(score);
                     } else {
                         stage += 1;
                     }
@@ -126,9 +121,12 @@ export default function Camera({ socket, users, room, user, exercise }) {
         getVideo();
     }, [videoRef]);
 
+    useEffect(() => {
+        socket.emit('update', ({code:room, user: user, score: score}));
+    }, [score])
+
     const updateScore = () => {
-        setScore(score + 1);
-        socket.emit('update', {code:room, user: user, score: score});
+        setScore(prevScore => prevScore + 1);
     };
 
     return (
