@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from 'react-router-dom';
 import logoImg from '../../images/Juiced.io_Black.png';
 import "../../styles.css";

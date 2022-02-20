@@ -1,18 +1,37 @@
-.WelcomePage {
+.HomePage {
     background-image: url("./images/intro.jpeg");
     background-size: cover;
     height: 100vh;
 }
 
-.WelcomePage .container {
-    padding-top: 3vh;
+.HomePage img {
+    width: 150px;
+}
+
+.HomePage .container {
+    height: 50vh;
+    width: 40vw;
+}
+
+.HomePage h1 strong {
+    background: white;
+    color: black;
+    mix-blend-mode: screen;
+    padding-left: 0.2em;
+    padding-right: 0.7em;
+}
+
+.HomePage div.readyTo {
+    color: white;
+    letter-spacing: 4px;
+    word-spacing: 10px;
+    margin-bottom: 16px;
 }
 
 .JoinRoom {
     padding-top: 16vh;
 }
 
-.HomePage,
 .InstructionPage,
 .WaitRoom {
     padding-top: 10vh;
@@ -23,28 +42,22 @@
     border-radius: 0.5em;
 }
 
-.HomePage h1,
 .InstructionPage h1,
 .JoinRoom h1 {
     font-size: 3em;
     padding-bottom: 0.5em;
 }
 
-.WelcomePage h1 {
-    font-size: 2em;
+.HomePage h1 {
+    font-size: 5.6em;
+    color: black;
+    padding-bottom: 0.3em;
 }
 
-.WelcomePage img {
-    padding-bottom: 16em;
-}
-
-.WelcomePage h2 {
-    margin-top: 10em;
-    font-size: 1em;
-    padding: 8px 90px;
-    border: 2px solid black;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+.HomePage img {
+    padding-top: 2em;
+    padding-bottom: 3em;
+    margin-left: 2em;
 }
 
 .InstructionPage h2,
@@ -63,8 +76,7 @@
 .HomePage button,
 .InstructionPage button,
 .JoinRoom button,
-.WaitRoom button,
-.WelcomePage button {
+.WaitRoom button {
     border-radius: 0.75em;
     padding: 10px 30px;
 }

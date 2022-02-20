@@ -40,7 +40,7 @@ export default function JoinRoom() {
                     </button>                    
                 </div>
                 <div className="col-sm-6">
-                    <img src={fitz_HoopsImg} />
+                    <img src={fitz_HoopsImg} alt="fitz hoops" />
                 </div>
             </div>
         </div>

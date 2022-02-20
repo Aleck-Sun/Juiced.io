@@ -13,7 +13,7 @@ export default function WaitRoom() {
                     <h1>
                         Welcome to the waiting room!
                     </h1>
-                    <img src={group_7Img} />
+                    <img src={group_7Img} alt="group 7" />
                 </div>
                 <div className="col-ms-12">
                     <button className="btn btn-dark btn-lg" onClick={() => navigate('/Workouts')}>
