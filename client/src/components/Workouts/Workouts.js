@@ -5,6 +5,7 @@ import push_UpsImg from "../../images/Push_Ups.png";
 import sit_UpsImg from "../../images/Sit_ups.png";
 import jumping_JacksImg from "../../images/Jumping_Jacks.png";
 import high_KneesImg from "../../images/High_Knees.png";
+import draw_Your_Own_PatternIMG from "../../images/Draw_your_own_patten.png";
 import "../../styles.css";
 
 export default function WaitRoom() {
@@ -26,6 +27,10 @@ export default function WaitRoom() {
         {
             img: high_KneesImg,
             alt: "high knees"
+        },
+        {
+            img: draw_Your_Own_PatternIMG,
+            alt: "draw your own image"
         }
     ];
     

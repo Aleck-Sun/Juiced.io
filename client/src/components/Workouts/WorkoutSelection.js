@@ -6,7 +6,7 @@ export default function WorkoutSelection(props) {
             {props.workoutSelection.map((workoutType) => {
                 return (
                     <div className="card">
-                        <img className={workoutType.img} alt={workoutType.alt} />
+                        <img src={workoutType.img} alt={workoutType.alt} />
                     </div>
                 );
             })}
