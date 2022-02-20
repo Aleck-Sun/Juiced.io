@@ -19,7 +19,7 @@ function App() {
             <Route path="/CreateRoom" element={<CreateRoom />} />
             <Route path="/JoinRoom" element={<JoinRoom />} />
             <Route path="/Test" element={<Camera />} />
-            <Route path="/WaitRoom" element={<WaitRoom />} />
+            <Route path="/room" element={<WaitRoom />} />
             <Route path="/Workouts" element={<Workouts />} />
           </Routes>
         </div>

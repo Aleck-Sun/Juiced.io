@@ -15,25 +15,6 @@ export default function WaitRoom() {
                     </h1>
                     <img src={group_7Img} />
                 </div>
-                <div className="players col-ms-12">
-                    <div className="card-deck">
-                        <div className="card mb-3">
-                            <div className="card-body">
-                                Elena
-                            </div>
-                        </div>
-                        <div className="card mb-3">
-                            <div className="card-body">
-                                Fred
-                            </div>
-                        </div>
-                        <div className="card mb-3">
-                            <div className="card-body">
-                                Gavin
-                            </div>
-                        </div>                       
-                    </div>       
-                </div>
                 <div className="col-ms-12">
                     <button className="btn btn-dark btn-lg" onClick={() => navigate('/Workouts')}>
                         Start Game
