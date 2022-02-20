@@ -7,6 +7,7 @@ import JoinRoom from "./components/JoinRoom/JoinRoom";
 import Camera from './components/Camera/Camera';
 import WaitRoom from "./components/WaitRoom/WaitRoom";
 import Workouts from "./components/Workouts/Workouts";
+import WinnersPage from './components/WinnersPage/WinnersPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/Test" element={<Camera />} />
             <Route path="/room" element={<WaitRoom />} />
             <Route path="/Workouts" element={<Workouts />} />
+            <Route path="/Winners" element={<WinnersPage />} />
           </Routes>
         </div>
       </BrowserRouter>

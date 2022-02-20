@@ -50,6 +50,12 @@ export default function WaitRoom() {
             });
             console.log(winners);
             socket.disconnect();
+
+            navigate('/room', {
+                state:{
+                    winners: winners
+                }
+            });
         });
     }, []);
 
