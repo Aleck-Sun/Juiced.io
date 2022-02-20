@@ -26,6 +26,7 @@ io.on('connect', (socket) => {
         users.set(user, { id: socket.id, room: code, points: 0 });
 
         if (!rooms.has(code)) {
+            if(exercise == "") return callback({ error: 'Require fields' });
             var finalExercise = [exercise[0]];
             for (var i = 0; i < exercise.length; i++) {
                 // last node on finalExercise
