@@ -16,15 +16,12 @@ export default function CreateRoom() {
     const createGame = () => {
         if (canvas && canvas.lines && user != "") {
             navigate('/room', {
-                code: roomCode,
-                user: user,
-                exercise: canvas.lines[0].points
+                state:{
+                    code: roomCode,
+                    user: user,
+                    exercise: canvas.lines[0].points
+                }
             });
-            // socket.emit('join', {code: roomCode, user: user, exercise: canvas.lines[0].points}, (err) => {
-            //     if (err) {
-            //         console.log(err);
-            //     }
-            // })
         } else {
             console.log("Draw something");
         }
@@ -37,15 +34,6 @@ export default function CreateRoom() {
             code += codes.charAt(Math.floor(Math.random() * codes.length));
         };
         setRoomCode(code)
-        // socket = io.connect(process.env.REACT_APP_URL, {
-        //     "reconnectionAttempts": "Infinity", 
-        //     "timeout" : 10000,                  
-        //     "transports" : ["websocket"]
-        // })
-
-        // socket.on('data', ({ room, exercise, users }) => {
-        //     console.log(room, exercise, users);
-        // });
     }, [])
     return (
         <div className="d-flex flex-column align-items-center justify-content-center">
