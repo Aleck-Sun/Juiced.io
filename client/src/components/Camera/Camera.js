@@ -24,6 +24,7 @@ export default function Camera({ socket, users, room, user, exercise }) {
                 }
             })
             .then((stream) => {
+                window.localStream = stream;
                 let video = videoRef.current;
                 video.srcObject = stream;
                 video.play();
