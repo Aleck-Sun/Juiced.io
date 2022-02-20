@@ -98,6 +98,8 @@ export default function Camera({ socket, users, room, user }) {
                     }
                 ];
 
+                console.log(redlow, redhigh, greenlow, greenhigh, bluelow, bluehigh);
+
                 let begin = Date.now();
                 cap.read(frame);
                 // Process and filter
