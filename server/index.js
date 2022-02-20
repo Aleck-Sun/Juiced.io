@@ -45,6 +45,10 @@ io.on('connect', (socket) => {
         io.to(code).emit('data', {room: code, exercise: rooms.get(code).exercise, users: roomUsers});
         callback();
     });
+
+    socket.on('start', ({code}) => {
+        io.to(code).emit('begin', {});
+    });
 });
 
 const PORT = process.env.PORT || 5000;

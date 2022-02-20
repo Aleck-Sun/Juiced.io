@@ -36,11 +36,14 @@ export default function WaitRoom() {
             setExercise(exercise);
             setUsers(users);
         });
+
+        socket.on('begin', () => {
+            setStart(true);
+        });
     }, []);
 
     const startGame = () => {
-        console.log("Pressed button");
-        setStart(true);
+        socket.emit('start', {code: room});
     };
 
     return (
