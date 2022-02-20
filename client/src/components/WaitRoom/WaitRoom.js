@@ -42,13 +42,14 @@ export default function WaitRoom() {
 
         socket.on('begin', () => {
             setStart(true);
-            setTimeout(() => {
-                socket.emit('end', ({room, users}));
-            }, 20000)
         });
 
         socket.on('winners', ({winners}) => {
+            winners.sort((a, b) => {
+                return b.points - a.points;
+            });
             console.log(winners);
+            socket.disconnect();
         });
     }, []);
 

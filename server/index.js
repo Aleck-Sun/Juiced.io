@@ -66,22 +66,11 @@ io.on('connect', (socket) => {
                 roomUsers.push({...users.get(k), user: k});
             };
         };
-
-        io.to(code).emit('scoreUpdate', {users: roomUsers});
-    });
-
-    socket.on('end', ({code, users}) => {
-        var winners = [];
-        for (user in users) {
-            winners.push({user: user.user, points: user.points});
-        };
-
-        winners = winners.sort((a, b) => {
-            return b.points - a.points;
-        });
-
-        io.to(code).emit('winners', {winners: winners});
-        socket.disconnect()
+        if (score == 2) {
+            io.to(code).emit('winners', {winners: roomUsers});
+        } else {
+            io.to(code).emit('scoreUpdate', {users: roomUsers});
+        }
     });
 
     socket.on('disconnect', () => {
