@@ -1,4 +1,5 @@
 # Juiced.io
+## Overview
 Juiced.io is a fun party game to play with friends and families. Users can create rooms or join rooms and battle to complete the exercise first! The app can be played online [here.](https://juicedio.netlify.app/)
 
 ## How it works
