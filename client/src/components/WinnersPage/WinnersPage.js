@@ -31,7 +31,10 @@ export default function WinnersPage() {
                             </>
                 }) : <></> }
             </div>  
-            <button className="btn btn-primary m-2" onClick={() => navigate('/')}>
+            <button className="btn btn-primary m-2" onClick={() => {
+                navigate('/');
+                window.location.reload();
+                }}>
                 back
             </button>    
         </div>

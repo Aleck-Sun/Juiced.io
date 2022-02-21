@@ -15,19 +15,13 @@ export default function WaitRoom() {
     const [start, setStart] = useState(false);
     const navigate = useNavigate();
 
-    const closeVideo = () => {
-        window.localStream.getTracks().forEach( (track) => {
-            track.stop();
-        });
-    }
-
-
     useEffect(() => {
         if (!state) return navigate('/CreateRoom');
         const { code, user, exercise } = state;
         if (!code || !user) return navigate('/CreateRoom');
 
         socket = io.connect(process.env.REACT_APP_URL, {
+            "force new connection" : true,
             "reconnectionAttempts": "Infinity", 
             "timeout" : 10000,                  
             "transports" : ["websocket"]
@@ -57,9 +51,6 @@ export default function WaitRoom() {
             });
             console.log(winners);
             socket.disconnect();
-
-            closeVideo();
-
             navigate('/Winners', {
                 state:{
                     winners: winners

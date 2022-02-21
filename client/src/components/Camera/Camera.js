@@ -9,11 +9,11 @@ export default function Camera({ socket, users, room, user, exercise }) {
 
     const [currUsers, setCurrUsers] = useState(users);
     const [score, setScore] = useState(0);
-    const [redlow, setRedlow] = useState(200);
+    const [redlow, setRedlow] = useState(210);
     const [redhigh, setRedhigh] = useState(255);
-    const [greenlow, setGreenlow] = useState(200);
+    const [greenlow, setGreenlow] = useState(210);
     const [greenhigh, setGreenhigh] = useState(255);
-    const [bluelow, setBluelow] = useState(200);
+    const [bluelow, setBluelow] = useState(210);
     const [bluehigh, setBluehigh] = useState(255);
 
     const getVideo = () => {
@@ -24,7 +24,6 @@ export default function Camera({ socket, users, room, user, exercise }) {
                 }
             })
             .then((stream) => {
-                window.localStream = stream;
                 let video = videoRef.current;
                 video.srcObject = stream;
                 video.play();
@@ -97,8 +96,11 @@ export default function Camera({ socket, users, room, user, exercise }) {
                     p2 = new cv.Point(x + w, y + h);
                 }
                 cv.rectangle(frame, p1, p2, [0, 255, 0, 255], 2, cv.LINE_8, 0);
-
-                cv.imshow('canvasOutput', frame);
+                try {
+                    cv.imshow('canvasOutput', frame);
+                } catch (err) {
+                    console.log(err);
+                }
 
                 kernel.delete();
                 mask.delete();
@@ -135,7 +137,7 @@ export default function Camera({ socket, users, room, user, exercise }) {
             <h1>Your score: {score}</h1>
             <OpenCvProvider onLoad={ onLoaded }>
                 <video ref={ videoRef } width="700" height="500" style={ { display: "none" } } />
-                <canvas id="canvasOutput" ref={ photoRef } />
+                <canvas style={{transform: "scaleX(-1)"}} id="canvasOutput" ref={ photoRef } />
             </OpenCvProvider> 
             <div className="d-flex">
                 {currUsers.length > 0 ? currUsers.map((currUser) => {
