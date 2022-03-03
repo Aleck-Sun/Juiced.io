@@ -16,9 +16,9 @@ export default function WaitRoom() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!state) return navigate('/CreateRoom');
+        if (!state) return navigate('/createRoom');
         const { code, user, exercise } = state;
-        if (!code || !user) return navigate('/CreateRoom');
+        if (!code || !user) return navigate('/createRoom');
 
         socket = io.connect(process.env.REACT_APP_URL, {
             "force new connection" : true,
@@ -31,7 +31,7 @@ export default function WaitRoom() {
 
         socket.emit('join', {code: code, user: user, exercise: exercise}, (err) => {
             if (err) {
-                navigate('/CreateRoom');
+                navigate('/createRoom');
             }
         })
 
@@ -51,7 +51,7 @@ export default function WaitRoom() {
             });
             console.log(winners);
             socket.disconnect();
-            navigate('/Winners', {
+            navigate('/winners', {
                 state:{
                     winners: winners
                 }

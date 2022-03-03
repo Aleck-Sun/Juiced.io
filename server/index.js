@@ -18,6 +18,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 io.on('connect', (socket) => {
+    // Add user to room/create room
     socket.on('join', ({code, user, exercise}, callback) => {
         if (code == "" || user == "") return callback({ error: 'Require fields' });
         if (users.has(user) && rooms.has(code)) return callback({ error: 'Already exists' });
@@ -28,18 +29,20 @@ io.on('connect', (socket) => {
         if (!rooms.has(code) && exercise != "") {
             var finalExercise = [exercise[0]];
             for (var i = 0; i < exercise.length; i++) {
-                // last node on finalExercise
-                var lastNode = finalExercise[finalExercise.length - 1];
-                // distance between last node and current node
-                var distance = Math.sqrt(Math.pow(lastNode.x - exercise[i].x, 2) + Math.pow(lastNode.y - exercise[i].y, 2));
+                // Distance from prevNode to currNode
+                var prevNode = finalExercise[finalExercise.length - 1];
+                var distance = Math.sqrt(Math.pow(prevNode.x - exercise[i].x, 2) + Math.pow(prevNode.y - exercise[i].y, 2));
+
+                // Equalize exercise points to atleast 20 a part
+                // Improves algorithm efficiency
                 if (distance > 20) {
                     finalExercise.push(exercise[i]);
                 }
             }
-            
             rooms.set(code, { id: socket.id, exercise: finalExercise });
         };
 
+        // Get all current room users
         var roomUsers = []
         for (let k of users.keys()) {
             if (users.get(k).room == code) {
@@ -51,21 +54,25 @@ io.on('connect', (socket) => {
         callback();
     });
 
+    // Start the game
     socket.on('start', ({code}) => {
         io.to(code).emit('begin', {});
     });
 
+    // Update user scores and update winners
     socket.on('update', ({code, user, score}) => {
         if (users.has(user)) {
             users.get(user).points = score;
         };
 
+        // Get all current users in the room
         var roomUsers = []
         for (let k of users.keys()) {
             if (users.get(k).room == code) {
                 roomUsers.push({...users.get(k), user: k});
             };
         };
+
         if (score == 10) {
             io.to(code).emit('winners', {winners: roomUsers});
         } else {
@@ -73,6 +80,7 @@ io.on('connect', (socket) => {
         }
     });
 
+    // Remove room and users
     socket.on('disconnect', () => {
         for (let k of users.keys()) {
             if (users.get(k).id == socket.id) {

@@ -9,13 +9,8 @@ export default function Camera({ socket, users, room, user, exercise }) {
 
     const [currUsers, setCurrUsers] = useState(users);
     const [score, setScore] = useState(0);
-    const [redlow, setRedlow] = useState(210);
-    const [redhigh, setRedhigh] = useState(255);
-    const [greenlow, setGreenlow] = useState(210);
-    const [greenhigh, setGreenhigh] = useState(255);
-    const [bluelow, setBluelow] = useState(210);
-    const [bluehigh, setBluehigh] = useState(255);
 
+    // Write camera stream to video element
     const getVideo = () => {
         navigator.mediaDevices
             .getUserMedia({
@@ -47,8 +42,8 @@ export default function Camera({ socket, users, room, user, exercise }) {
                 cap.read(frame);
                 // Process and filter
                 let mask = new cv.Mat();
-                let low = new cv.Mat(frame.rows, frame.cols, frame.type(), [redlow, greenlow, bluelow, 255]);
-                let high = new cv.Mat(frame.rows, frame.cols, frame.type(), [redhigh, greenhigh, bluehigh, 255]);
+                let low = new cv.Mat(frame.rows, frame.cols, frame.type(), [210, 210, 210, 255]);
+                let high = new cv.Mat(frame.rows, frame.cols, frame.type(), [255, 255, 255, 255]);
                 cv.inRange(frame, low, high, mask);
 
                 let kernel = cv.Mat.ones(5, 5, cv.CV_8U);
@@ -96,6 +91,8 @@ export default function Camera({ socket, users, room, user, exercise }) {
                     p2 = new cv.Point(x + w, y + h);
                 }
                 cv.rectangle(frame, p1, p2, [0, 255, 0, 255], 2, cv.LINE_8, 0);
+
+                // Draw frame to canvas
                 try {
                     cv.imshow('canvasOutput', frame);
                 } catch (err) {
@@ -147,14 +144,6 @@ export default function Camera({ socket, users, room, user, exercise }) {
                             </h3>
                 }) : null}
             </div>
-            {/* <div className="slidecontainer">
-                <input type="range" min="1" max="255" value={redlow} onChange={(e) => setRedlow(e.target.value)} className="rl" />
-                <input type="range" min="1" max="255" value={redhigh} onChange={(e) => setRedhigh(e.target.value)} className="rh" />
-                <input type="range" min="1" max="255" value={greenlow} onChange={(e) => setGreenlow(e.target.value)} className="gl" />
-                <input type="range" min="1" max="255" value={greenhigh} onChange={(e) => setGreenhigh(e.target.value)} className="gh" />
-                <input type="range" min="1" max="255" value={bluelow} onChange={(e) => setBluelow(e.target.value)} className="bl" />
-                <input type="range" min="1" max="255" value={bluehigh} onChange={(e) => setBluehigh(e.target.value)} className="bh" />
-            </div>  */}
         </div>
     );
 };

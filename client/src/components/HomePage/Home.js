@@ -9,15 +9,15 @@ export default function HomePage() {
     return (
         <div className="HomePage">
             <img src={logoImg} alt="Juiced.io logo" />
-            <div className=" d-flex flex-column align-items-center container">
+            <div className="d-flex flex-column align-items-center container">
                 <h1>
                     <div className="readyTo">READY TO</div><strong>BATTLE?</strong>
                 </h1>
                 <div className="d-flex justify-content-center">
-                    <button className="btn btn-danger m-2" onClick={() => navigate('/CreateRoom')}>
+                    <button className="btn btn-danger m-2" onClick={() => navigate('/createRoom')}>
                         <strong>Create Game</strong>
                     </button>
-                    <button className="btn btn-danger m-2" onClick={() => navigate('/JoinRoom')}>
+                    <button className="btn btn-danger m-2" onClick={() => navigate('/joinRoom')}>
                         <strong>Join Game</strong>
                     </button> 
                 </div>

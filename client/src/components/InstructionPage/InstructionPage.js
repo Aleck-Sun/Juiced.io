@@ -14,22 +14,26 @@ export default function InstructionPage() {
                     How to Play
                 </h1>
                 <h2>
-                    Step 1. White Paper
+                    Step 1. Get White Object
                 </h2>
                 <p>
-                    Our AI detects your exercise movements<br />by tracking a white piece of paper.
+                    Our AI detects your exercise movements by tracking any white object.
+                    <br></br>
+                    White paper is recommended.
                 </p>
                 <h2>
-                    Step 2. Grab the Scissors
+                    Step 2. Hold/Tape White Object
                 </h2>
                 <p>
-                    Cut out a small square (roughly around 7cm x 7cm).
+                    Hold/tape the object to the respective body part / equipment depending on the excerise.
+                    <br></br>
+                    The object should be placed somewhere easy to follow drawn exercise motions.
                 </p>
                 <h2>
-                    Step 3. Tape and Play!
+                    Step 3. Play!
                 </h2>
                 <p>
-                    Lastly, tape the piece of paper to the<br />respective body part depending on the excerise.
+                    Start moving and following the drawn exercise motion!
                 </p>
                 <button className="btn btn-dark mt-5" onClick={() => navigate('/')}>
                     Back
