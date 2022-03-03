@@ -4,7 +4,7 @@ Juiced.io is a fun party game to play with friends and families. Users can creat
 ## Demo
 > **Devpost:** https://devpost.com/software/juiced-io<br/>
 > **Video Demo:** https://www.youtube.com/watch?v=mT5ON4vxfyQ&ab_channel=AleckSun
-<img src="client/src/images/Juicedio.gif" width="941" height="593"/>
+<img src="client/src/images/Juicedio.gif" width="784" height="494"/>
 
 ## How It Works
 The room creator draws an exercise motion for users to perform reps on. The lobby then begins and users fight to be the first to complete ten reps. Our app uses OpenCV to track white objects that the user holds while performing the exercise. Our matching algorithm then determines if the tracked object is correctly following the drawn exercise motion and updates scores accordingly.<br/><br/>
