@@ -4,6 +4,7 @@ import { Server } from 'socket.io';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import Spline from 'cubic-spline';
 
 const app = express();
 const server = createServer(app);
@@ -27,17 +28,31 @@ io.on('connect', (socket) => {
         users.set(user, { id: socket.id, room: code, points: 0 });
 
         if (!rooms.has(code) && exercise != "") {
-            var finalExercise = [exercise[0]];
-            for (var i = 0; i < exercise.length; i++) {
-                // Distance from prevNode to currNode
-                var prevNode = finalExercise[finalExercise.length - 1];
-                var distance = Math.sqrt(Math.pow(prevNode.x - exercise[i].x, 2) + Math.pow(prevNode.y - exercise[i].y, 2));
+            // Get length of exercise
+            var totalDistance = 0
+            for (var i = 1; i < exercise.length; i++) {
+                totalDistance += Math.sqrt(Math.pow(exercise[i - 1].x - exercise[i].x, 2) + Math.pow(exercise[i - 1].y - exercise[i].y, 2));
+            }
 
-                // Equalize exercise points to atleast 20 a part
-                // Improves algorithm efficiency
-                if (distance > 20) {
-                    finalExercise.push(exercise[i]);
-                }
+            const x_points = []
+            const y_points = []
+            const t_points = []
+            for (var i = 0; i < exercise.length; i++) {
+                t_points.push(i)
+                x_points.push(exercise[i].x)
+                y_points.push(exercise[i].y)
+            }
+
+            // Cubic spline interpolation
+            const spline1 = new Spline(t_points, x_points);
+            const spline2 = new Spline(t_points, y_points);
+            const numPoints = Math.floor(totalDistance / 20)
+            const points_factor = t_points.length / numPoints
+            var finalExercise = []
+            for (var i = 0; i < numPoints; i++) {
+                const x = spline1.at(i * points_factor)
+                const y = spline2.at(i * points_factor)
+                finalExercise.push({ x, y })
             }
             rooms.set(code, { id: socket.id, exercise: finalExercise });
         };
